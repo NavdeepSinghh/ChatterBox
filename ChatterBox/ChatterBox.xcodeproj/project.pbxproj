@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11EE7431EE6796800A100EC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EE7421EE6796800A100EC /* LoginController.swift */; };
+		F11EE7451EE67B6800A100EC /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EE7441EE67B6800A100EC /* ViewHelper.swift */; };
 		F15E60701EE2EDAD00C8A2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15E606F1EE2EDAD00C8A2D6 /* AppDelegate.swift */; };
 		F15E60721EE2EDAD00C8A2D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15E60711EE2EDAD00C8A2D6 /* ViewController.swift */; };
 		F15E60771EE2EDAD00C8A2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F15E60761EE2EDAD00C8A2D6 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F11EE7421EE6796800A100EC /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		F11EE7441EE67B6800A100EC /* ViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
 		F15E606C1EE2EDAC00C8A2D6 /* ChatterBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatterBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15E606F1EE2EDAD00C8A2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F15E60711EE2EDAD00C8A2D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				F15E60711EE2EDAD00C8A2D6 /* ViewController.swift */,
+				F11EE7421EE6796800A100EC /* LoginController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				F15E607B1EE2EDAD00C8A2D6 /* Info.plist */,
+				F11EE7441EE67B6800A100EC /* ViewHelper.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -165,6 +171,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F15E60721EE2EDAD00C8A2D6 /* ViewController.swift in Sources */,
+				F11EE7431EE6796800A100EC /* LoginController.swift in Sources */,
+				F11EE7451EE67B6800A100EC /* ViewHelper.swift in Sources */,
 				F15E60701EE2EDAD00C8A2D6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
