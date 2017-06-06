@@ -54,9 +54,9 @@
 			children = (
 				F16EAF861EE6745700CC699E /* AppDelegate */,
 				F16EAF871EE6757400CC699E /* Controllers */,
-				F15E60761EE2EDAD00C8A2D6 /* Assets.xcassets */,
+				F16EAF881EE676E300CC699E /* Resources */,
 				F15E60781EE2EDAD00C8A2D6 /* LaunchScreen.storyboard */,
-				F15E607B1EE2EDAD00C8A2D6 /* Info.plist */,
+				F16EAF891EE6772500CC699E /* Supporting Files */,
 			);
 			path = ChatterBox;
 			sourceTree = "<group>";
@@ -75,6 +75,22 @@
 				F15E60711EE2EDAD00C8A2D6 /* ViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F16EAF881EE676E300CC699E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F15E60761EE2EDAD00C8A2D6 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F16EAF891EE6772500CC699E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F15E607B1EE2EDAD00C8A2D6 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,7 +282,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ChatterBox/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ChatterBox/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Navdeep.ChatterBox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -278,7 +294,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ChatterBox/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ChatterBox/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Navdeep.ChatterBox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
