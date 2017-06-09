@@ -11,6 +11,8 @@
 		F11EE7431EE6796800A100EC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EE7421EE6796800A100EC /* LoginController.swift */; };
 		F11EE7451EE67B6800A100EC /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EE7441EE67B6800A100EC /* ViewHelper.swift */; };
 		F1528EED1EE902F80067808C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1528EEC1EE902F80067808C /* GoogleService-Info.plist */; };
+		F1528EF01EE913C00067808C /* FireBaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1528EEF1EE913C00067808C /* FireBaseClient.swift */; };
+		F1528EF21EE9184E0067808C /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1528EF11EE9184E0067808C /* NetworkingErrors.swift */; };
 		F15E60701EE2EDAD00C8A2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15E606F1EE2EDAD00C8A2D6 /* AppDelegate.swift */; };
 		F15E60721EE2EDAD00C8A2D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15E60711EE2EDAD00C8A2D6 /* ViewController.swift */; };
 		F15E60771EE2EDAD00C8A2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F15E60761EE2EDAD00C8A2D6 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 		F11EE7421EE6796800A100EC /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F11EE7441EE67B6800A100EC /* ViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
 		F1528EEC1EE902F80067808C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F1528EEF1EE913C00067808C /* FireBaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseClient.swift; sourceTree = "<group>"; };
+		F1528EF11EE9184E0067808C /* NetworkingErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
 		F15E606C1EE2EDAC00C8A2D6 /* ChatterBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatterBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15E606F1EE2EDAD00C8A2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F15E60711EE2EDAD00C8A2D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +65,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F1528EEE1EE9136C0067808C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F1528EEF1EE913C00067808C /* FireBaseClient.swift */,
+				F1528EF11EE9184E0067808C /* NetworkingErrors.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		F15E60631EE2EDAC00C8A2D6 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +95,7 @@
 		F15E606E1EE2EDAC00C8A2D6 /* ChatterBox */ = {
 			isa = PBXGroup;
 			children = (
+				F1528EEE1EE9136C0067808C /* Networking */,
 				F16EAF861EE6745700CC699E /* AppDelegate */,
 				F16EAF871EE6757400CC699E /* Controllers */,
 				F16EAF881EE676E300CC699E /* Resources */,
@@ -250,6 +264,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F15E60721EE2EDAD00C8A2D6 /* ViewController.swift in Sources */,
+				F1528EF01EE913C00067808C /* FireBaseClient.swift in Sources */,
+				F1528EF21EE9184E0067808C /* NetworkingErrors.swift in Sources */,
 				F11EE7431EE6796800A100EC /* LoginController.swift in Sources */,
 				F11EE7451EE67B6800A100EC /* ViewHelper.swift in Sources */,
 				F15E60701EE2EDAD00C8A2D6 /* AppDelegate.swift in Sources */,

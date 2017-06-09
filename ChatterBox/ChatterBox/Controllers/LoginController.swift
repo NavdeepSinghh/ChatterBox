@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginController: UIViewController {
     
@@ -21,12 +22,18 @@ class LoginController: UIViewController {
         return viewToGatherinputs
     }()
     
-    let chatterAppIcon : UIImageView = {
+    let profileIcon : UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "chatteroo")
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+    
+    let loginOrSignUpSegmentedControl : UISegmentedControl = {
+        let segControl = UISegmentedControl(items: ["Login", "Sign Up"])
+        segControl.translatesAutoresizingMaskIntoConstraints = false
+        return segControl
     }()
     
     let nameTextField : UITextField = {
@@ -79,9 +86,34 @@ class LoginController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.addTarget(self, action: #selector(loginOrSignUpButtonPressed), for: .touchUpInside)
         return button
     }()
-
+    
+    func loginOrSignUpButtonPressed() {
+        guard let email = emailTextField.text,
+            let password = passwordTextField.text,
+            let name = nameTextField.text else {
+                print("Invalid!")
+                return
+        }
+        
+        FireBaseClient().createUserWithEmail(email: email, password: password){user , error in
+            if let user = user {
+                let referenceToDatabase = Database.database().reference(fromURL:"https://chatterbox-c4236.firebaseio.com/")
+                let userReference = referenceToDatabase.child("users").child(user.uid)
+                let values = ["name" : name, "email": email]
+                userReference.updateChildValues(values, withCompletionBlock: { (err, reference) in
+                    if err != nil {
+                        print(err!)
+                        return
+                    }
+                    print("Saved user in FB DB")
+                })
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,21 +121,30 @@ class LoginController: UIViewController {
         
         view.addSubview(userInputGatherView)
         view.addSubview(loginOrSignUpButton)
-        view.addSubview(chatterAppIcon)
+        view.addSubview(profileIcon)
+        view.addSubview(loginOrSignUpSegmentedControl)
         setupViewToGatherUserCredentials()
         setupLoginOrSignUpButton()
         setupChatterAppIcon()
+        setupLoginOrSignupSegmentedControl()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
+    func setupLoginOrSignupSegmentedControl() {
+        loginOrSignUpSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginOrSignUpSegmentedControl.bottomAnchor.constraint(equalTo: userInputGatherView.topAnchor, constant: -12).isActive = true
+        loginOrSignUpSegmentedControl.widthAnchor.constraint(equalTo: userInputGatherView.widthAnchor).isActive = true
+        loginOrSignUpSegmentedControl.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
     func setupChatterAppIcon(){
-        chatterAppIcon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        chatterAppIcon.bottomAnchor.constraint(equalTo: userInputGatherView.topAnchor, constant: -12).isActive = true
-        chatterAppIcon.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        chatterAppIcon.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        profileIcon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        profileIcon.bottomAnchor.constraint(equalTo: userInputGatherView.topAnchor, constant: -12).isActive = true
+        profileIcon.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        profileIcon.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
     }
     
