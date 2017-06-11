@@ -10,13 +10,16 @@
 		8AC5C85C68B29C9ABF099A03 /* Pods_ChatterBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DEB306B960E1878036D003 /* Pods_ChatterBox.framework */; };
 		F11EE7431EE6796800A100EC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EE7421EE6796800A100EC /* LoginController.swift */; };
 		F11EE7451EE67B6800A100EC /* ViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EE7441EE67B6800A100EC /* ViewHelper.swift */; };
+		F11FBB1D1EED5B3E001AACAF /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11FBB1C1EED5B3E001AACAF /* NewMessageController.swift */; };
 		F1528EED1EE902F80067808C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1528EEC1EE902F80067808C /* GoogleService-Info.plist */; };
 		F1528EF01EE913C00067808C /* FireBaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1528EEF1EE913C00067808C /* FireBaseClient.swift */; };
 		F1528EF21EE9184E0067808C /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1528EF11EE9184E0067808C /* NetworkingErrors.swift */; };
 		F15E60701EE2EDAD00C8A2D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15E606F1EE2EDAD00C8A2D6 /* AppDelegate.swift */; };
-		F15E60721EE2EDAD00C8A2D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15E60711EE2EDAD00C8A2D6 /* ViewController.swift */; };
+		F15E60721EE2EDAD00C8A2D6 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15E60711EE2EDAD00C8A2D6 /* MessagesController.swift */; };
 		F15E60771EE2EDAD00C8A2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F15E60761EE2EDAD00C8A2D6 /* Assets.xcassets */; };
 		F15E607A1EE2EDAD00C8A2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15E60781EE2EDAD00C8A2D6 /* LaunchScreen.storyboard */; };
+		F1CA40BB1EED6B4C0021ED2E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA40BA1EED6B4C0021ED2E /* User.swift */; };
+		F1CA40BE1EED774C0021ED2E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA40BD1EED774C0021ED2E /* UserCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,15 +28,18 @@
 		E339B13C0FC5B1DFF1399906 /* Pods-ChatterBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatterBox.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChatterBox/Pods-ChatterBox.release.xcconfig"; sourceTree = "<group>"; };
 		F11EE7421EE6796800A100EC /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F11EE7441EE67B6800A100EC /* ViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewHelper.swift; sourceTree = "<group>"; };
+		F11FBB1C1EED5B3E001AACAF /* NewMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		F1528EEC1EE902F80067808C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F1528EEF1EE913C00067808C /* FireBaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseClient.swift; sourceTree = "<group>"; };
 		F1528EF11EE9184E0067808C /* NetworkingErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
 		F15E606C1EE2EDAC00C8A2D6 /* ChatterBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatterBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15E606F1EE2EDAD00C8A2D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F15E60711EE2EDAD00C8A2D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F15E60711EE2EDAD00C8A2D6 /* MessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
 		F15E60761EE2EDAD00C8A2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F15E60791EE2EDAD00C8A2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F15E607B1EE2EDAD00C8A2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1CA40BA1EED6B4C0021ED2E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F1CA40BD1EED774C0021ED2E /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,8 @@
 		F15E606E1EE2EDAC00C8A2D6 /* ChatterBox */ = {
 			isa = PBXGroup;
 			children = (
+				F1CA40BC1EED77190021ED2E /* TableViewCells */,
+				F1CA40B91EED6B160021ED2E /* Models */,
 				F1528EEE1EE9136C0067808C /* Networking */,
 				F16EAF861EE6745700CC699E /* AppDelegate */,
 				F16EAF871EE6757400CC699E /* Controllers */,
@@ -116,8 +124,9 @@
 		F16EAF871EE6757400CC699E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F15E60711EE2EDAD00C8A2D6 /* ViewController.swift */,
+				F15E60711EE2EDAD00C8A2D6 /* MessagesController.swift */,
 				F11EE7421EE6796800A100EC /* LoginController.swift */,
+				F11FBB1C1EED5B3E001AACAF /* NewMessageController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -138,6 +147,22 @@
 				F11EE7441EE67B6800A100EC /* ViewHelper.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1CA40B91EED6B160021ED2E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1CA40BA1EED6B4C0021ED2E /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F1CA40BC1EED77190021ED2E /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				F1CA40BD1EED774C0021ED2E /* UserCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,10 +288,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F15E60721EE2EDAD00C8A2D6 /* ViewController.swift in Sources */,
+				F15E60721EE2EDAD00C8A2D6 /* MessagesController.swift in Sources */,
 				F1528EF01EE913C00067808C /* FireBaseClient.swift in Sources */,
 				F1528EF21EE9184E0067808C /* NetworkingErrors.swift in Sources */,
 				F11EE7431EE6796800A100EC /* LoginController.swift in Sources */,
+				F1CA40BB1EED6B4C0021ED2E /* User.swift in Sources */,
+				F1CA40BE1EED774C0021ED2E /* UserCell.swift in Sources */,
+				F11FBB1D1EED5B3E001AACAF /* NewMessageController.swift in Sources */,
 				F11EE7451EE67B6800A100EC /* ViewHelper.swift in Sources */,
 				F15E60701EE2EDAD00C8A2D6 /* AppDelegate.swift in Sources */,
 			);

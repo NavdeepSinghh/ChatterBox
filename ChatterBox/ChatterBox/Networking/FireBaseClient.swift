@@ -19,7 +19,7 @@ class FireBaseClient {
     var array : [Int] = []
     
     func createUserWithEmail(email : String, password : String, completion : @escaping UserAuthenticationResponse){
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+        Auth.auth().createUser(withEmail: email, password: password) { (user , error) in
             
             if let err = error{
                 print("Error")
