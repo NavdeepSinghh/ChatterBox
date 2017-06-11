@@ -30,9 +30,12 @@ class LoginController: UIViewController {
         return imageView
     }()
     
-    let loginOrSignUpSegmentedControl : UISegmentedControl = {
+    lazy var loginOrSignUpSegmentedControl : UISegmentedControl = {
         let segControl = UISegmentedControl(items: ["Login", "Sign Up"])
         segControl.translatesAutoresizingMaskIntoConstraints = false
+        segControl.tintColor = UIColor.white
+        segControl.selectedSegmentIndex = 1
+        segControl.addTarget(self, action: #selector(handleLoginOrSignUpChange), for: .valueChanged)
         return segControl
     }()
     
@@ -79,19 +82,18 @@ class LoginController: UIViewController {
         return separatorView
     }()
     
-    let loginOrSignUpButton : UIButton = {
+    lazy var loginOrSignUpButton : UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(red: 80, green: 101, blue: 161)
-        button.setTitle("LOGIN", for: .normal)
+        button.setTitle("Sign Up", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
         button.addTarget(self, action: #selector(loginOrSignUpButtonPressed), for: .touchUpInside)
         return button
     }()
     
-    func loginOrSignUpButtonPressed() {
+    func handleSignUp() {
         guard let email = emailTextField.text,
             let password = passwordTextField.text,
             let name = nameTextField.text else {
@@ -109,9 +111,33 @@ class LoginController: UIViewController {
                         print(err!)
                         return
                     }
-                    print("Saved user in FB DB")
+                    self.dismiss(animated: true, completion: nil)
                 })
             }
+        }
+    }
+    
+    func loginOrSignUpButtonPressed () {
+        if loginOrSignUpSegmentedControl.selectedSegmentIndex == 0 {
+            handleLogin()
+        }else {
+            handleSignUp()
+        }
+    }
+    
+    func handleLogin() {
+        guard let email = emailTextField.text,
+            let password = passwordTextField.text else {
+                print("Invalid!")
+                return
+        }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
         }
     }
 
@@ -125,12 +151,43 @@ class LoginController: UIViewController {
         view.addSubview(loginOrSignUpSegmentedControl)
         setupViewToGatherUserCredentials()
         setupLoginOrSignUpButton()
-        setupChatterAppIcon()
+        setupProfileIcon()
         setupLoginOrSignupSegmentedControl()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    var nameText : String?
+    
+    func handleLoginOrSignUpChange() {
+        let title = loginOrSignUpSegmentedControl.titleForSegment(at: loginOrSignUpSegmentedControl.selectedSegmentIndex)
+        loginOrSignUpButton.setTitle(title, for: .normal)
+        
+        // change height of the userInputGatherView
+        userInputGatherViewHeightConstraint?.constant = loginOrSignUpSegmentedControl.selectedSegmentIndex == 0 ? 100 : 150
+        
+        // change heigh of the name text field
+        nameTextFieldHeightConstraint?.isActive = false
+        nameTextFieldHeightConstraint = nameTextField.heightAnchor.constraint(equalTo: userInputGatherView.heightAnchor, multiplier: loginOrSignUpSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1/3)
+        nameTextField.placeholder = loginOrSignUpSegmentedControl.selectedSegmentIndex == 0 ? "" : "Name"
+        
+        // Maintaining text value in case the user switches from signup to login and vice versa
+        if nameTextField.text != "" {
+            nameText = nameTextField.text
+        }
+        
+        nameTextField.text = loginOrSignUpSegmentedControl.selectedSegmentIndex == 0 ? "" : nameText
+        nameTextFieldHeightConstraint?.isActive = true
+        
+        emailTextFieldHeightConstraint?.isActive = false
+        emailTextFieldHeightConstraint = emailTextField.heightAnchor.constraint(equalTo: userInputGatherView.heightAnchor, multiplier: loginOrSignUpSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
+        emailTextFieldHeightConstraint?.isActive = true
+        
+        passwordTextFieldHeightConstraint?.isActive = false
+        passwordTextFieldHeightConstraint = passwordTextField.heightAnchor.constraint(equalTo: userInputGatherView.heightAnchor, multiplier: loginOrSignUpSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/3)
+        passwordTextFieldHeightConstraint?.isActive = true
     }
     
     func setupLoginOrSignupSegmentedControl() {
@@ -140,25 +197,31 @@ class LoginController: UIViewController {
         loginOrSignUpSegmentedControl.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-    func setupChatterAppIcon(){
+    func setupProfileIcon(){
         profileIcon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        profileIcon.bottomAnchor.constraint(equalTo: userInputGatherView.topAnchor, constant: -12).isActive = true
+        profileIcon.bottomAnchor.constraint(equalTo: loginOrSignUpSegmentedControl.topAnchor, constant: -12).isActive = true
         profileIcon.widthAnchor.constraint(equalToConstant: 150).isActive = true
         profileIcon.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        
     }
+    
+    var userInputGatherViewHeightConstraint : NSLayoutConstraint?
+    var nameTextFieldHeightConstraint : NSLayoutConstraint?
+    var emailTextFieldHeightConstraint : NSLayoutConstraint?
+    var passwordTextFieldHeightConstraint : NSLayoutConstraint?
     
     func setupViewToGatherUserCredentials(){
         userInputGatherView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         userInputGatherView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         userInputGatherView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
-        userInputGatherView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        userInputGatherViewHeightConstraint = userInputGatherView.heightAnchor.constraint(equalToConstant: 150)
+        userInputGatherViewHeightConstraint?.isActive = true
         
         userInputGatherView.addSubview(nameTextField)
         nameTextField.leftAnchor.constraint(equalTo: userInputGatherView.leftAnchor, constant : 12).isActive = true
         nameTextField.topAnchor.constraint(equalTo: userInputGatherView.topAnchor).isActive = true
         nameTextField.widthAnchor.constraint(equalTo: userInputGatherView.widthAnchor).isActive = true
-        nameTextField.heightAnchor.constraint(equalTo: userInputGatherView.heightAnchor, multiplier : 1/3).isActive = true
+        nameTextFieldHeightConstraint = nameTextField.heightAnchor.constraint(equalTo: userInputGatherView.heightAnchor, multiplier : 1/3)
+        nameTextFieldHeightConstraint?.isActive = true
         
         userInputGatherView.addSubview(textFieldSeparator)
         textFieldSeparator.leftAnchor.constraint(equalTo: userInputGatherView.leftAnchor).isActive = true
@@ -170,7 +233,8 @@ class LoginController: UIViewController {
         emailTextField.leftAnchor.constraint(equalTo: userInputGatherView.leftAnchor, constant : 12).isActive = true
         emailTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
         emailTextField.widthAnchor.constraint(equalTo: userInputGatherView.widthAnchor).isActive = true
-        emailTextField.heightAnchor.constraint(equalTo: userInputGatherView.heightAnchor, multiplier : 1/3).isActive = true
+        emailTextFieldHeightConstraint =  emailTextField.heightAnchor.constraint(equalTo: userInputGatherView.heightAnchor, multiplier : 1/3)
+        emailTextFieldHeightConstraint?.isActive = true
         
         userInputGatherView.addSubview(emailTextFieldSeparator)
         emailTextFieldSeparator.leftAnchor.constraint(equalTo: userInputGatherView.leftAnchor).isActive = true
@@ -182,7 +246,8 @@ class LoginController: UIViewController {
         passwordTextField.leftAnchor.constraint(equalTo: userInputGatherView.leftAnchor, constant : 12).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
         passwordTextField.widthAnchor.constraint(equalTo: userInputGatherView.widthAnchor).isActive = true
-        passwordTextField.heightAnchor.constraint(equalTo: userInputGatherView.heightAnchor, multiplier : 1/3).isActive = true
+        passwordTextFieldHeightConstraint = passwordTextField.heightAnchor.constraint(equalTo: userInputGatherView.heightAnchor, multiplier : 1/3)
+        passwordTextFieldHeightConstraint?.isActive = true
         
         userInputGatherView.addSubview(passwordTextFieldSeparator)
         passwordTextFieldSeparator.leftAnchor.constraint(equalTo: userInputGatherView.leftAnchor).isActive = true
