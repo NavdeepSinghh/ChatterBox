@@ -40,6 +40,7 @@ extension LoginController {
                                 print(error)
                                 return
                             }
+                            
                             if let profileImageURL = metaData?.downloadURL()?.absoluteString{
                                 let values = ["name" : name, "email": email, "profileImageUrl" : profileImageURL]
                                 self.registerUserInFirebaseDB(uid: user.uid, values: values as [String : AnyObject])
@@ -60,7 +61,11 @@ extension LoginController {
                 print(err!)
                 return
             }
-            self.messagesController?.navigationItem.title = values["name"] as? String
+            
+            let user = LocalUser()
+            user.setValuesForKeys(values)
+            self.messagesController?.setupNavBarWithUser(user: user)
+            
             self.dismiss(animated: true, completion: nil)
         })
     }
