@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatterBox/Supporting Files/ViewHelper.swift"
-            timestampString = "518430446.697156"
+            timestampString = "519615796.521302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
             landmarkName = "init(red:green:blue:)"
             landmarkType = "7">
          </BreakpointContent>

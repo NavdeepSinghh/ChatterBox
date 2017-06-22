@@ -20,6 +20,7 @@
 		F15E607A1EE2EDAD00C8A2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15E60781EE2EDAD00C8A2D6 /* LaunchScreen.storyboard */; };
 		F1CA40BB1EED6B4C0021ED2E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA40BA1EED6B4C0021ED2E /* User.swift */; };
 		F1CA40BE1EED774C0021ED2E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA40BD1EED774C0021ED2E /* UserCell.swift */; };
+		F1CA40C01EED8AE00021ED2E /* LoginController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA40BF1EED8AE00021ED2E /* LoginController+handlers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		F15E607B1EE2EDAD00C8A2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1CA40BA1EED6B4C0021ED2E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1CA40BD1EED774C0021ED2E /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		F1CA40BF1EED8AE00021ED2E /* LoginController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginController+handlers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				F15E60711EE2EDAD00C8A2D6 /* MessagesController.swift */,
 				F11EE7421EE6796800A100EC /* LoginController.swift */,
+				F1CA40BF1EED8AE00021ED2E /* LoginController+handlers.swift */,
 				F11FBB1C1EED5B3E001AACAF /* NewMessageController.swift */,
 			);
 			path = Controllers;
@@ -292,6 +295,7 @@
 				F1528EF01EE913C00067808C /* FireBaseClient.swift in Sources */,
 				F1528EF21EE9184E0067808C /* NetworkingErrors.swift in Sources */,
 				F11EE7431EE6796800A100EC /* LoginController.swift in Sources */,
+				F1CA40C01EED8AE00021ED2E /* LoginController+handlers.swift in Sources */,
 				F1CA40BB1EED6B4C0021ED2E /* User.swift in Sources */,
 				F1CA40BE1EED774C0021ED2E /* UserCell.swift in Sources */,
 				F11FBB1D1EED5B3E001AACAF /* NewMessageController.swift in Sources */,

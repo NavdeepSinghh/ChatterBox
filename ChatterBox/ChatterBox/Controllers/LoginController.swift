@@ -11,6 +11,7 @@ import Firebase
 
 class LoginController: UIViewController {
     
+    var messagesController : MessagesController?
     // Creating view components 
     
     let userInputGatherView : UIView = {
@@ -22,11 +23,14 @@ class LoginController: UIViewController {
         return viewToGatherinputs
     }()
     
-    let profileIcon : UIImageView = {
+    lazy var profileIcon : UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "chatteroo")
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chooseProfileIcon)))
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -93,54 +97,7 @@ class LoginController: UIViewController {
         return button
     }()
     
-    func handleSignUp() {
-        guard let email = emailTextField.text,
-            let password = passwordTextField.text,
-            let name = nameTextField.text else {
-                print("Invalid!")
-                return
-        }
-        
-        FireBaseClient().createUserWithEmail(email: email, password: password){user , error in
-            if let user = user {
-                let referenceToDatabase = Database.database().reference(fromURL:"https://chatterbox-c4236.firebaseio.com/")
-                let userReference = referenceToDatabase.child("users").child(user.uid)
-                let values = ["name" : name, "email": email]
-                userReference.updateChildValues(values, withCompletionBlock: { (err, reference) in
-                    if err != nil {
-                        print(err!)
-                        return
-                    }
-                    self.dismiss(animated: true, completion: nil)
-                })
-            }
-        }
-    }
     
-    func loginOrSignUpButtonPressed () {
-        if loginOrSignUpSegmentedControl.selectedSegmentIndex == 0 {
-            handleLogin()
-        }else {
-            handleSignUp()
-        }
-    }
-    
-    func handleLogin() {
-        guard let email = emailTextField.text,
-            let password = passwordTextField.text else {
-                print("Invalid!")
-                return
-        }
-        
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 61, green: 91, blue: 151)
