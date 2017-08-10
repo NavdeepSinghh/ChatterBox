@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  ChatterBox
@@ -11,17 +12,55 @@ import Firebase
 
 class MessagesController: UITableViewController {
 
+    let cellID = "userCell"
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image : #imageLiteral(resourceName: "new_message_icon"), style : .plain, target: self, action : #selector(handleNewMessage))
         checkIfUserLoggedIn()
-        }
+        tableView.register(UserCell.self, forCellReuseIdentifier: cellID)
+        observeMessages()
+    }
     
     func handleNewMessage() {
         let newMessageController = NewMessageController()
+        newMessageController.messagesController = self
         let navController = UINavigationController(rootViewController : newMessageController)
         present(navController, animated: true, completion: nil)
+    }
+    
+    var messages = [Message]()
+    
+    func observeMessages(){
+        let ref = Database.database().reference().child("messages")
+        ref.observe(.childAdded, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                let message = Message()
+                message.setValuesForKeys(dictionary)
+                self.messages.append(message)
+                // call table reload on the main queue
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }, withCancel: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 72
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! UserCell
+        cell.message = messages[indexPath.row]
+        
+        return cell
     }
     
     func checkIfUserLoggedIn() {
@@ -89,11 +128,12 @@ class MessagesController: UITableViewController {
         
         self.navigationItem.titleView = titleView
         
-        titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showChatController)))
+        //titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showChatController)))
     }
     
-    func showChatController() {
-        let chatLogController = ChatLogController()
+    func showChatControllerFortUser(user : LocalUser) {
+        let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
+        chatLogController.user = user
         navigationController?.pushViewController(chatLogController, animated: true)
     }
     

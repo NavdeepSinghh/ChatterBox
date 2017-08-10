@@ -28,6 +28,7 @@ class NewMessageController: UITableViewController {
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 // not the right place to initialize user
                 let user = LocalUser()
+                user.id = snapshot.key
                 user.name = dictionary["name"] as? String
                 user.email = dictionary["email"] as? String
                 user.profileImageUrl = dictionary["profileImageUrl"] as? String
@@ -62,5 +63,14 @@ class NewMessageController: UITableViewController {
             cell.profileImageView.loadImageusingCacheWithURLString(urlString: imageUrl)
         }
         return cell
+    }
+    
+    var messagesController : MessagesController?
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dismiss(animated: true) { 
+            print("Dismiss")
+            let user = self.users[indexPath.row]
+            self.messagesController?.showChatControllerFortUser(user: user)
+        }
     }
 }

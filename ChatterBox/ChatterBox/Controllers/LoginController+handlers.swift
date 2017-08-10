@@ -54,7 +54,7 @@ extension LoginController {
     }
     
     private func registerUserInFirebaseDB(uid : String, values : [String: AnyObject]) {
-        let referenceToDatabase = Database.database().reference(fromURL:"https://chatterbox-c4236.firebaseio.com/")
+        let referenceToDatabase = Database.database().reference()
         let userReference = referenceToDatabase.child("users").child(uid)
         userReference.updateChildValues(values, withCompletionBlock: { (err, reference) in
             if err != nil {

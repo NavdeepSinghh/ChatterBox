@@ -7,8 +7,27 @@
 //
 
 import UIKit
+import Firebase
 
 class UserCell: UITableViewCell {
+    
+    var message : Message? {
+        didSet {
+            if let toID = message?.toID {
+                let ref = Database.database().reference().child("users").child(toID)
+                ref.observe(.value, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: AnyObject]{
+                        self.textLabel?.text = dictionary["name"] as? String
+                        if let imageUrl = dictionary["profileImageUrl"] as? String {
+                            // Calling the method from ViewHelper extension now
+                            self.profileImageView.loadImageusingCacheWithURLString(urlString: imageUrl)
+                        }
+                    }
+                }, withCancel: nil)
+            }
+            detailTextLabel?.text = message?.text
+        }
+    }
     
     let profileImageView : UIImageView = {
         let imageView = UIImageView()

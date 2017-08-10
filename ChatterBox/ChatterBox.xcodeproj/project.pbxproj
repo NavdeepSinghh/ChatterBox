@@ -21,6 +21,7 @@
 		F1CA40BB1EED6B4C0021ED2E /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA40BA1EED6B4C0021ED2E /* LocalUser.swift */; };
 		F1CA40BE1EED774C0021ED2E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA40BD1EED774C0021ED2E /* UserCell.swift */; };
 		F1CA40C01EED8AE00021ED2E /* LoginController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CA40BF1EED8AE00021ED2E /* LoginController+handlers.swift */; };
+		F61B66051F3B2BBB00CE5EFE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61B66041F3B2BBB00CE5EFE /* Message.swift */; };
 		F61D61571F399E1400DD3C01 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61D61561F399E1400DD3C01 /* ChatLogController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		F1CA40BA1EED6B4C0021ED2E /* LocalUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
 		F1CA40BD1EED774C0021ED2E /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		F1CA40BF1EED8AE00021ED2E /* LoginController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LoginController+handlers.swift"; sourceTree = "<group>"; };
+		F61B66041F3B2BBB00CE5EFE /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F61D61561F399E1400DD3C01 /* ChatLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				F1CA40BA1EED6B4C0021ED2E /* LocalUser.swift */,
+				F61B66041F3B2BBB00CE5EFE /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				TargetAttributes = {
 					F15E606B1EE2EDAC00C8A2D6 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = J7285MX229;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -303,6 +307,7 @@
 				F1CA40BB1EED6B4C0021ED2E /* LocalUser.swift in Sources */,
 				F1CA40BE1EED774C0021ED2E /* UserCell.swift in Sources */,
 				F11FBB1D1EED5B3E001AACAF /* NewMessageController.swift in Sources */,
+				F61B66051F3B2BBB00CE5EFE /* Message.swift in Sources */,
 				F11EE7451EE67B6800A100EC /* ViewHelper.swift in Sources */,
 				F15E60701EE2EDAD00C8A2D6 /* AppDelegate.swift in Sources */,
 			);
@@ -422,7 +427,9 @@
 			baseConfigurationReference = 413B55D5E15ECBC52B8D149E /* Pods-ChatterBox.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J7285MX229;
 				INFOPLIST_FILE = "$(SRCROOT)/ChatterBox/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Navdeep.ChatterBox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -435,7 +442,9 @@
 			baseConfigurationReference = E339B13C0FC5B1DFF1399906 /* Pods-ChatterBox.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = J7285MX229;
 				INFOPLIST_FILE = "$(SRCROOT)/ChatterBox/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Navdeep.ChatterBox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
